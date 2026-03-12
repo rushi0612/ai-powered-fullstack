@@ -1,4 +1,4 @@
-const userModer = require('../models/user.model.js');
+const userModel = require('../models/user.model.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 /**
@@ -13,7 +13,7 @@ async function registerUserController(req, res) {
             message: "Please provide username, email, and password"
         })
     }
-    const isUserAlreadyExits = await userModel.findOne({
+    const isUserAlreadyExists = await userModel.findOne({
         $or: [ { username}, {email}]
     })
     if(isUserAlreadyExists){
